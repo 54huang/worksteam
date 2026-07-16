@@ -1,4 +1,10 @@
 /**
+ * 技能标签数据，最多展示前 8 项
+ * @constant {string[]}
+ */
+var SKILLS = ["JavaScript", "React", "Python", "Node.js", "Vue", "CSS"];
+
+/**
  * 头像加载失败时的 SVG 占位图（data URI）
  * @constant {string}
  */
@@ -74,7 +80,46 @@ function initEmailCopy(emailEl) {
   });
 }
 
+/**
+ * 动态渲染技能标签到容器中，最多展示前 8 个
+ */
+function renderSkills() {
+  var container = document.querySelector('.profile-card__skills');
+  if (!container) return;
+  var max = Math.min(SKILLS.length, 8);
+  for (var i = 0; i < max; i++) {
+    var tag = document.createElement('span');
+    tag.className = 'profile-card__skill-tag';
+    tag.setAttribute('data-skill', SKILLS[i]);
+    tag.textContent = SKILLS[i];
+    container.appendChild(tag);
+  }
+}
+
+/**
+ * 初始化主题切换按钮
+ */
+function initThemeToggle() {
+  var btn = document.querySelector('.theme-toggle');
+  if (!btn) return;
+
+  btn.addEventListener('click', function () {
+    var html = document.documentElement;
+    var current = html.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    try {
+      localStorage.setItem('profile-theme', next);
+    } catch (e) {
+      // localStorage 不可用时静默降级
+    }
+  });
+}
+
 (function () {
+  initThemeToggle();
+  renderSkills();
+
   var emailEl = document.querySelector('.profile-card__email[data-copy]');
   var avatarEl = document.querySelector('.profile-card__avatar');
 
