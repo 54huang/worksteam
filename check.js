@@ -88,8 +88,8 @@ check(/function initThemeToggle/, jsContent, 'main.js \u5b9a\u4e49\u4e86 initThe
 check(/profile-theme/, jsContent, 'main.js \u4f7f\u7528 profile-theme \u952e\u540d');
 check(/setAttribute\('data-skill'/, jsContent, 'renderSkills \u8bbe\u7f6e data-skill \u5c5e\u6027');
 check(/SKILLS\.length/, jsContent, 'SKILLS \u5f15\u7528\u65f6\u68c0\u67e5\u4e86 length');
-check(/}, 1000\)/, jsContent, 'main.js toast \u65f6\u957f\u4e3a 1000ms');
-fileContains('index.html', /class="profile-card__email-icon"/, 'index.html \u5b58\u5728 .profile-card__email-icon');
+check(/}, 1000\)/, jsContent, 'main.js toast 时长为 1000ms');
+fileContains('index.html', /class="profile-card__email-icon"/, 'index.html 存在 .profile-card__email-icon');
 
 console.log('\n=== \u603b\u8ba1 ===');
 console.log('  \u901a\u8fc7: ' + passed + '  \u5931\u8d25: ' + failed);
