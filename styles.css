@@ -204,17 +204,37 @@ body {
 }
 
 .profile-card__email {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
   font-size: 0.95rem;
-  color: var(--color-accent);
+  font-family: inherit;
+  color: var(--color-text);
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
   cursor: pointer;
   user-select: all;
-  border-radius: 4px;
-  padding: 2px 6px;
-  transition: color 0.2s;
+  transition: background-color 0.2s, border-color 0.2s, transform 0.1s;
 }
 
 .profile-card__email:hover {
-  color: var(--color-accent-hover);
+  background-color: var(--color-bg);
+  border-color: var(--color-text-secondary);
+}
+
+.profile-card__email:active {
+  transform: scale(0.96);
+}
+
+.profile-card__email:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.profile-card__email-icon {
+  flex-shrink: 0;
 }
 
 .profile-card__email:focus-visible {
